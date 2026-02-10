@@ -32,7 +32,11 @@ st.set_page_config(
 # ================================
 # GEMINI API SETUP
 # ================================
-GEMINI_API_KEY = "AIzaSyDoCOpDeJzZzQPCHokZLYzzO6CE-wxcUDk"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not GEMINI_API_KEY:
+    raise ValueError("Gemini API key not found. Please set GEMINI_API_KEY.")
+
 genai.configure(api_key=GEMINI_API_KEY)
 
 # Custom CSS for professional styling
